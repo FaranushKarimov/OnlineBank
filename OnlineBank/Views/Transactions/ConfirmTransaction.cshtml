@@ -1,0 +1,64 @@
+﻿
+@model OnlineBank.Models.TransactionViewModel
+
+@{
+    ViewBag.Title = "ConfirmTransaction";
+}
+
+<h2>Confirm</h2>
+
+<h3>Are you sure you want to confirm this transaction?</h3>
+<div>
+    <h4>Transaction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.transDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.transDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.transAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.transAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fromAccount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fromAccount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.toAccount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.toAccount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.typeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.typeId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Confirm Transaction" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

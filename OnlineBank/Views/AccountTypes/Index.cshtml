@@ -1,0 +1,47 @@
+﻿@model IEnumerable<AccountTypeViewModel>
+@using OnlineBank.Models
+@using OnlineBank.Code
+
+<div class="top-buffer"></div>
+<div class="panel panel-primary">
+    <div class="panel-heading panel-head">AccountTypes</div>
+    <div class="panel-body">
+        <div class="btn-group">
+            <a id="createEditAccountTypeModal" data-toggle="modal" asp-action="AddEditAccountType" data-target="#modal-action-accountType" class="btn btn-primary">
+                <i class="glyphicon glyphicon-plus"></i>  Add Account Type
+            </a>
+        </div>
+        <div class="top-buffer"></div>
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>Type Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.accTypeName)</td>
+                        <td>
+                            <a id="editAccountTypeModal" data-toggle="modal" asp-action="AddEditAccountType" asp-route-id="@item.accTypeId" data-target="#modal-action-accountType"
+                               class="btn btn-info">
+                                <i class="glyphicon glyphicon-pencil"></i>  Edit Account Type
+                            </a>
+                            <a id="deleteAccountTypeModal" data-toggle="modal" asp-action="DeleteAccountType" asp-route-id="@item.accTypeId" data-target="#modal-action-accountType" class="btn btn-danger">
+                                <i class="glyphicon glyphicon-trash"></i>  Delete Account Type
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@Html.Partial("_Modal", new BootstrapModel { ID = "modal-action-accountType", AreaLabeledId = "modal-action-accountType-label", Size = ModalSize.Medium })
+
+@section scripts
+    {
+    <script src="~/js/accountType-index.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,19 @@
+﻿@model AccountTypeViewModel
+@using OnlineBank.Models
+
+<form asp-action="AddEditAccountType" role="form">
+    @await Html.PartialAsync("_ModalHeader", new ModalHeader { Heading = $"{(@Model.accTypeId == 0 ? "Add" : "Edit")} AccountType" })
+
+    <div class="modal-body form-horizontal">
+        <div class="form-group">
+            <label asp-for="accTypeName" class="col-lg-3 col-sm-3 control-label"></label>
+            <div class="col-lg-6">
+                <input asp-for="accTypeName" class="form-control" />
+            </div>
+        </div>
+      
+    </div>
+    @await Html.PartialAsync("_ModalFooter", new ModalFooter { })
+</form>
+
+

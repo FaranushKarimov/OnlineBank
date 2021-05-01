@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "AccountOperations";
+}
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+</style>
+
+<div class="image">
+    <img src="~/images/account.png" width="500" height="200" class="center" />
+</div>
+
+<div class="btn-group, center">
+    <button onclick="window.location.href = 'https://localhost:44384/AccountTransaction/Deposit';">Deposit</button>
+    <button onclick="window.location.href = 'https://localhost:44384/AccountTransaction/Transfer';">Transfer</button>
+    <button onclick="window.location.href = 'https://localhost:44384/AccountTransaction/Withdrawl';">Withdrawl</button>
+</div>

@@ -1,0 +1,113 @@
+﻿@*@model IEnumerable<TransactionViewModel>
+    @using OnlineBank.Models
+    @using OnlineBank.Code
+
+    <div class="top-buffer"></div>
+    <div class="panel panel-primary">
+        <div class="panel-heading panel-head">Transactions</div>
+        <div class="panel-body">
+            <div class="btn-group">
+                <a id="createEditTransactionModal" data-toggle="modal" asp-action="AddEditTransaction" data-target="#modal-action-transaction" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-plus"></i>  Add Transaction
+                </a>
+            </div>
+            <div class="top-buffer"></div>
+            <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th>Transaction Date</th>
+                        <th>Transaction Amount</th>
+                        <th>Transaction Type ID</th>
+                        <th>Transaction From Account</th>
+                        <th>Transaction To Account</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.transDate)</td>
+                            <td>@Html.DisplayFor(modelItem => item.transAmount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.typeId)</td>
+                            <td>@Html.DisplayFor(modelItem => item.fromAccount)</td>
+                            <td>@Html.DisplayFor(modelItem => item.toAccount)</td>
+                            <td>
+                                <a id="editTransactionModal" data-toggle="modal" asp-action="AddEditTransaction" asp-route-id="@item.transId" data-target="#modal-action-transaction"
+                                   class="btn btn-info">
+                                    <i class="glyphicon glyphicon-pencil"></i>  Edit
+                                </a>
+                                <a id="deleteTransactionModal" data-toggle="modal" asp-action="DeleteTransaction" asp-route-id="@item.transId" data-target="#modal-action-transaction" class="btn btn-danger">
+                                    <i class="glyphicon glyphicon-trash"></i>  Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @Html.Partial("_Modal", new BootstrapModel { ID = "modal-action-transaction", AreaLabeledId = "modal-action-transaction-label", Size = ModalSize.Medium })
+
+    @section scripts
+        {
+        <script src="~/js/transaction-index.js" asp-append-version="true"></script>
+    }*@
+
+
+@model IEnumerable<OnlineBank.Models.TransactionViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.transDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.transAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fromAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.toAccount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.typeId)
+        </th>
+    </tr>
+
+    @foreach (var order in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelOrder => order.transDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelOrder => order.transAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelOrder => order.fromAccount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelOrder => order.toAccount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelOrder => order.typeId)
+            </td>
+
+            <td>
+                @Html.ActionLink("Confirm Transaction", "ConfirmTransaction", new { id = order.transId })
+            </td>
+        </tr>
+    }
+
+</table>

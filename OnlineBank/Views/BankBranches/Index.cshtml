@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BankBranchViewModel>
+@using OnlineBank.Models
+@using OnlineBank.Code
+
+<div class="top-buffer"></div>
+<div class="panel panel-primary">
+    <div class="panel-heading panel-head">Bank Branches</div>
+    <div class="panel-body">
+        <div class="btn-group">
+            <a id="createEditBankBranchModal" data-toggle="modal" asp-action="AddEditBankBranch" data-target="#modal-action-bankBranch" class="btn btn-primary">
+                <i class="glyphicon glyphicon-plus"></i>  Add Bank Branch
+            </a>
+        </div>
+        <div class="top-buffer"></div>
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>Bank Name</th>
+                    <th>Bank Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.bankName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.bankLocation)</td>
+                        <td>
+                            <a id="editBankBranchModal" data-toggle="modal" asp-action="AddEditBankBranch" asp-route-id="@item.bankId" data-target="#modal-action-bankBranch"
+                               class="btn btn-info">
+                                <i class="glyphicon glyphicon-pencil"></i>  Edit
+                            </a>
+                            <a id="deleteBankBranchModal" data-toggle="modal" asp-action="DeleteBankBranch" asp-route-id="@item.bankId" data-target="#modal-action-bankBranch" class="btn btn-danger">
+                                <i class="glyphicon glyphicon-trash"></i>  Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@Html.Partial("_Modal", new BootstrapModel { ID = "modal-action-bankBranch", AreaLabeledId = "modal-action-bankBranch-label", Size = ModalSize.Medium })
+
+@section scripts
+    {
+    <script src="~/js/bankBranch-index.js" asp-append-version="true"></script>
+}

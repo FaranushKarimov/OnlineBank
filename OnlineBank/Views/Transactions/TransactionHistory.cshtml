@@ -1,0 +1,56 @@
+﻿@model IEnumerable<TransactionViewModel>
+@using OnlineBank.Models
+@using OnlineBank.Code
+
+<div class="top-buffer"></div>
+<div class="panel panel-primary">
+    <div class="panel-heading panel-head">Transactions</div>
+    <div class="panel-body">
+        <div class="btn-group">
+            @*<a id="createEditTransactionModal" data-toggle="modal" asp-action="AddEditTransaction" data-target="#modal-action-transaction" class="btn btn-primary">
+                <i class="glyphicon glyphicon-plus"></i>  Add Transaction
+            </a>*@
+        </div>
+        <div class="top-buffer"></div>
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>Transaction Date</th>
+                    <th>Transaction Amount</th>
+                    <th>Transaction From Account</th>
+                    <th>Transaction To Account</th>
+                    <th>Transaction Type Id</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.transDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.transAmount)</td>
+                    <td>@Html.DisplayFor(modelItem => item.fromAccount)</td>
+                    <td>@Html.DisplayFor(modelItem => item.toAccount)</td>
+                    <td>@Html.DisplayFor(modelItem => item.typeId)</td>
+                    @*<td>@Html.DisplayFor(modelItem => item.accountTransaction.Account.name)</td>*@
+                    <td>
+                        @*<a id="editTransactionModal" data-toggle="modal" asp-action="AddEditTransaction" asp-route-id="@item.transId" data-target="#modal-action-transaction"
+               class="btn btn-info">
+                <i class="glyphicon glyphicon-pencil"></i>  Edit
+            </a>
+            <a id="deleteTransactionModal" data-toggle="modal" asp-action="DeleteTransaction" asp-route-id="@item.transId" data-target="#modal-action-transaction" class="btn btn-danger">
+                <i class="glyphicon glyphicon-trash"></i>  Delete
+            </a>*@
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@Html.Partial("_Modal", new BootstrapModel { ID = "modal-action-transaction", AreaLabeledId = "modal-action-transaction-label", Size = ModalSize.Medium })
+
+@section scripts
+    {
+    <script src="~/js/transaction-index.js" asp-append-version="true"></script>
+}

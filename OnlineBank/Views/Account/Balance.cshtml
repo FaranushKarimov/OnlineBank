@@ -1,0 +1,56 @@
+﻿@model IEnumerable<AccountViewModel>
+    @using OnlineBank.Models
+    @using OnlineBank.Code
+
+    <div class="top-buffer"></div>
+    <div class="panel panel-primary">
+        <div class="panel-heading panel-head">Your Account</div>
+        <div class="panel-body">
+
+            <div class="top-buffer"></div>
+            <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th>Account Number</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Username</th>
+                        <th>Phone Number</th>
+                        <th>City</th>
+                        <th>Limit</th>
+                        <th>Balance</th>
+                        <th>Expiry Date</th>
+                        <th>Bank ID</th>
+                        <th>Account Type ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.accountNumber)</td>
+                        <td>@Html.DisplayFor(modelItem => item.name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.email)</td>
+                        <td>@Html.DisplayFor(modelItem => item.username)</td>
+                        <td>@Html.DisplayFor(modelItem => item.phone)</td>
+                        <td>@Html.DisplayFor(modelItem => item.city)</td>
+                        <td>@Html.DisplayFor(modelItem => item.limit)</td>
+                        <td>@Html.DisplayFor(modelItem => item.balance)</td>
+                        <td>@Html.DisplayFor(modelItem => item.expDate)</td>
+                        <td>@Html.DisplayFor(modelItem => item.bankId)</td>
+                        <td>@Html.DisplayFor(modelItem => item.accTypeId)</td>
+
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @Html.Partial("_Modal", new BootstrapModel { ID = "modal-action-account", AreaLabeledId = "modal-action-account-label", Size = ModalSize.Medium })
+
+    @section scripts
+        {
+        <script src="~/js/account-index.js" asp-append-version="true"></script>
+    }
+

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TransactionTypeViewModel>
+@using OnlineBank.Models
+@using OnlineBank.Code
+
+<div class="top-buffer"></div>
+<div class="panel panel-primary">
+    <div class="panel-heading panel-head">TransactionTypes</div>
+    <div class="panel-body">
+        <div class="btn-group">
+            <a id="createEditTransactionTypeModal" data-toggle="modal" asp-action="AddEditTransactionType" data-target="#modal-action-transactionType" class="btn btn-primary">
+                <i class="glyphicon glyphicon-plus"></i>  Add Transaction Type
+            </a>
+        </div>
+        <div class="top-buffer"></div>
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.typeName)</td>
+                        <td>
+                            <a id="editTransactionTypeModal" data-toggle="modal" asp-action="AddEditTransactionType" asp-route-id="@item.typeId" data-target="#modal-action-transactionType"
+                               class="btn btn-info">
+                                <i class="glyphicon glyphicon-pencil"></i>  Edit
+                            </a>
+                            <a id="deleteTransactionTypeModal" data-toggle="modal" asp-action="DeleteTransactionType" asp-route-id="@item.typeId" data-target="#modal-action-transactionType" class="btn btn-danger">
+                                <i class="glyphicon glyphicon-trash"></i>  Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@Html.Partial("_Modal", new BootstrapModel { ID = "modal-action-transactionType", AreaLabeledId = "modal-action-transactionType-label", Size = ModalSize.Medium })
+
+@section scripts
+    {
+    <script src="~/js/transactionType-index.js" asp-append-version="true"></script>
+}

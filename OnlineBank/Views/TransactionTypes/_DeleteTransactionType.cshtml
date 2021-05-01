@@ -1,0 +1,13 @@
+﻿@model TransactionTypeViewModel
+@using OnlineBank.Models
+
+@using (Html.BeginForm())
+{
+    @Html.Partial("_ModalHeader", new ModalHeader { Heading = "Delete Transaction Type" })
+
+    <div class="modal-body form-horizontal">
+        Are you sure you want to delete @Model.typeName?
+    </div>
+    @Html.Partial("_ModalFooter", new ModalFooter { SubmitButtonText = "Delete" })
+}
+

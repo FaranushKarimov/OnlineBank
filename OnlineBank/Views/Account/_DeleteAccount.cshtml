@@ -1,0 +1,13 @@
+﻿@model AccountViewModel
+@using OnlineBank.Models
+
+@using (Html.BeginForm())
+{
+    @Html.Partial("_ModalHeader", new ModalHeader { Heading = "Delete Account" })
+
+    <div class="modal-body form-horizontal">
+        Are you sure you want to delete @Model.accountId?
+    </div>
+    @Html.Partial("_ModalFooter", new ModalFooter { SubmitButtonText = "Delete" })
+}
+

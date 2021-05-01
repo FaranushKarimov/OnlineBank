@@ -1,0 +1,23 @@
+﻿@page
+@model AccessDeniedModel
+@{
+    ViewData["Title"] = "Access denied";
+}
+
+@*<style>
+    body {
+        background-color: red;
+    }
+
+</style>*@
+
+<body>
+    <header>
+
+        <div id="access-denied-div">
+            <h1 class="text-danger">@ViewData["Title"]</h1>
+
+            <img src="~/images/accessdenied.png" />
+        </div>
+    </header>
+</body>

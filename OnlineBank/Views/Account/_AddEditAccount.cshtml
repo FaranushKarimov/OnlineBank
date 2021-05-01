@@ -1,0 +1,81 @@
+﻿@model AccountViewModel
+@using OnlineBank.Models
+
+<form asp-action="AddEditAccount" role="form">
+    @await Html.PartialAsync("_ModalHeader", new ModalHeader { Heading = $"{(@Model.accountId == 0 ? "Add" : "Edit")} Account" })
+
+    <div class="modal-body form-horizontal">
+        <div class="form-group">
+            <label asp-for="accountNumber" class="col-lg-3 col-sm-3 control-label"></label>
+            <div class="col-lg-6">
+                <input asp-for="accountNumber" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="name" class="col-lg-3 col-sm-3 control-label"></label>
+            <div class="col-lg-6">
+                <input asp-for="name" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="email" class="col-lg-3 col-sm-3 control-label"></label>
+            <div class="col-lg-6">
+                <input asp-for="email" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="username" class="col-lg-3 col-sm-3 control-label"></label>
+            <div class="col-lg-6">
+                <input asp-for="username" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="phone" class="col-lg-3 col-sm-3 control-label"></label>
+            <div class="col-lg-6">
+                <input asp-for="phone" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="city" class="col-lg-3 col-sm-3 control-label"></label>
+            <div class="col-lg-6">
+                <input asp-for="city" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="limit" class="col-lg-3 col-sm-3 control-label"></label>
+            <div class="col-lg-6">
+                <input asp-for="limit" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="balance" class="col-lg-3 col-sm-3 control-label"></label>
+            <div class="col-lg-6">
+                <input asp-for="balance" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="expDate" class="col-lg-3 col-sm-3 control-label"></label>
+            <div class="col-lg-6">
+                <input asp-for="expDate" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="bankId" class="col-lg-3 col-sm-3 control-label"></label>
+            <div class="col-lg-6">
+                <input asp-for="bankId" class="form-control" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="accTypeId" class="col-lg-3 col-sm-3 control-label"></label>
+            <div class="col-lg-6">
+                <input asp-for="accTypeId" class="form-control" />
+            </div>
+        </div>
+
+    </div>
+    @await Html.PartialAsync("_ModalFooter", new ModalFooter { })
+</form>
+
+

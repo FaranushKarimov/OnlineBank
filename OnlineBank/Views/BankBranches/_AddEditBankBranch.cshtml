@@ -1,0 +1,26 @@
+﻿@model BankBranchViewModel
+@using OnlineBank.Models
+
+<form asp-action="AddEditBankBranch" role="form">
+    @await Html.PartialAsync("_ModalHeader", new ModalHeader { Heading = $"{(@Model.bankId == 0 ? "Add" : "Edit")} Bank Branch" })
+
+    <div class="modal-body form-horizontal">
+        <div class="form-group">
+            <label asp-for="bankName" class="col-lg-3 col-sm-3 control-label"></label>
+            <div class="col-lg-6">
+                <input asp-for="bankName" class="form-control" />
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label asp-for="bankLocation" class="col-lg-3 col-sm-3 control-label"></label>
+            <div class="col-lg-6">
+                <input asp-for="bankLocation" class="form-control" />
+            </div>
+        </div>
+
+    </div>
+    @await Html.PartialAsync("_ModalFooter", new ModalFooter { })
+</form>
+
+
